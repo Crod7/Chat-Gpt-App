@@ -1,16 +1,20 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
-    const event = req.body;
+import connectMongoDB from "@/lib/MongoConnect";
 
 
-    // process event to store in mongoDB
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== "POST") {
+    res.status(405).send({ msg: "Only POST requests are allowed. This error is located in /src/paes/api/user/set_user.ts" });
+    return;
+  }
 
+  const event = req.body;
 
-
-    res.status(201).json({ message: 'Event received and stored' });
-  } else {
-    res.status(405).json({ message: 'Method not allowed' });
+  try {
+    await connectMongoDB();
+    res.status(201).send("201");
+  } catch (err:any) {
+      console.error(err);
+      res.status(400).send({ err, msg: 'Something went wrong.' });
   }
 }
