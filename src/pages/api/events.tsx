@@ -1,26 +1,23 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import connectMongoDB from '@/lib/MongoConnect';
-import mongoose from 'mongoose';
+import Event from '@/models/EmailEventSchema';
 
-
+//Recieves only json in POST req and saves to mongoDB
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
-    res.status(405).send({ msg: "Only POST requests are allowed. This error is located in /src/paes/api/user/set_user.ts" });
+    res.status(405).send({ msg: "Only POST requests are allowed. This error is located in events.tsx in api folder" });
     return;
   }
 
-  const event = req.body;
+  const {event} = req.body;
 
   try {
     await connectMongoDB();
 
-    // Create a new EmailEvent document using the retrieved JSON data
-    //const newEvent = new EmailEventModel(event);
+    // This is the event being saved to mongoDB
+    const createdEvent = await Event.create(event);
 
-    // Save the new event to the database
-    //await newEvent.save();
-
-    res.status(201).send("Event saved to MongoDB.");
+    res.status(201).send(`Event saved to MongoDB: ${createdEvent}`);
   } catch (err:any) {
       console.error(err);
       res.status(400).send({ err, msg: 'Something went wrong.' });
