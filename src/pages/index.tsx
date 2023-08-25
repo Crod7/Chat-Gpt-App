@@ -3,9 +3,13 @@ import data from "../../lib/testEvent";
 
 export default function Home() {
   const handlePostEventClick = async () => {
-
+    // Update the timestamp to the current time before sending
+    const eventData = {
+      ...data,
+      timestamp: new Date().toISOString()
+    };    
     try {
-      await axios.post('/api/events', { event: data });
+      await axios.post('/api/events', { event: eventData });
       console.log('Event posted successfully');
     } catch (error) {
       console.error('Error posting event:', error);

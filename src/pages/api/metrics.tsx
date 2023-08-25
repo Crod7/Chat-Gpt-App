@@ -13,7 +13,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Iterate through events and calculate metrics
       let countryCount:any = {US: 0, ES: 0, IT: 0};
       let deviceCount: any = {desktop: 0, mobile: 0, tablet: 0};
-      let timeseries:any = [];
+      // Initialize timeseries with an object for each minute
+      let timeseries: { [key: string]: { totalOpens: number; time: string } } = {};
 
       events.forEach(event => {
         // Check if the event has geo_ip and country attributes
@@ -36,13 +37,35 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           }
 
 
+          if (event.timestamp) {
+
+            // Create a Date object from the Unix timestamp in milliseconds
+            const eventTime = new Date(event.timestamp);
+
+            // Set seconds to 0
+            eventTime.setSeconds(0);
+
+            // Format the time as needed (e.g., "8/19/2023, 6:48:00 PM")
+            const formattedTime = eventTime.toLocaleString();
+
+            // Initialize the timeseries entry if not present
+            if (!timeseries[formattedTime]) {
+              timeseries[formattedTime] = { totalOpens: 0, time: formattedTime };
+            }
+
+            // Increment totalOpens for the corresponding time
+            timeseries[formattedTime].totalOpens++;
+          }
+
+
 
 
 
         }
       });
-      console.log(countryCount)
-      console.log(deviceCount)
+      console.log(countryCount);
+      console.log(deviceCount);
+      console.log(timeseries);
 
       res.status(200).json({ countryCount, deviceCount });
     } catch (err) {
