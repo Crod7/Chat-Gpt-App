@@ -85,7 +85,7 @@ export default function Home() {
           <p>Device Count: {JSON.stringify(metricsData.deviceCount)}</p>
           {Object.keys(metricsData.timeseries).length > 0 ? (
             <div>
-              <p>Timeseries:</p>
+              <p>Timeseries(UTC):</p>
               <ul>
                 {Object.keys(metricsData.timeseries).reverse().map((timestamp:any, index) => (
                   <li key={index}>
