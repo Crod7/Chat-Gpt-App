@@ -67,7 +67,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       console.log(deviceCount);
       console.log(timeseries);
 
-      res.status(200).json({ countryCount, deviceCount });
+      res.status(200).json({ countryCount, deviceCount, timeseries });
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Error fetching data from the database' });
