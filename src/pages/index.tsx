@@ -95,7 +95,7 @@ export default function Home() {
               </ul>
             </div>
           ) : (
-            <p>No timeseries data available.</p>
+            <p>Grab Time Series</p>
           )}
         </div>
       )}
