@@ -16,94 +16,32 @@ interface MetricsData {
   timeseries: TimeseriesData;
 }
 
-export default function Home() {
-  const { user, error } = useUser();
-  const [isLoading, setIsLoading] = useState(false);
-  const [metricsData, setMetricsData] = useState<MetricsData | null>(null);
+export default function LoginPage() {
+  const { user, error, isLoading } = useUser();
 
-  const handlePostEventClick = async () => {
-    if (isLoading) return; // Don't allow button press if loading is in progress
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    setIsLoading(true); // Start loading
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
-    // Update the timestamp to the current time before sending
-    const eventData = {
-      ...data,
-      timestamp: new Date().toISOString()
-    };
-
-    try {
-      await axios.post('/api/events', { event: eventData });
-      console.log('Event posted successfully');
-    } catch (error) {
-      console.error('Error posting event:', error);
-    } finally {
-      setIsLoading(false); // Stop loading
-      handleGetMetricsClick()
-    }
-  };
-
-  const handleGetMetricsClick = async () => {
-    if (isLoading) return; // Don't allow button press if loading is in progress
-
-    setIsLoading(true); // Start loading
-
-    try {
-      const response = await axios.get('/api/metrics');
-      const metrics = response.data;
-      console.log('Metrics:', metrics);
-      setMetricsData(metrics);
-    } catch (error) {
-      console.error('Error getting metrics:', error);
-    } finally {
-      setIsLoading(false); // Stop loading
-    }
-  };
-
-
+  if (user) {
+    // User is already authenticated, redirect them to the home page or dashboard
+    return (
+      <div>
+        <p>Welcome, {user.name}!</p>
+        <Link href="/dashboard">Go to Dashboard</Link>
+      </div>
+    );
+  }
 
   return (
     <div>
-      <Link href="/api/auth/login">Login</Link>
-      <Link href="/api/auth/logout">Logout</Link>
-      <button
-        onClick={handlePostEventClick}
-        className={`${
-          isLoading ? 'opacity-50 cursor-not-allowed' : ''
-        } bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-md`}
-      >
-        POST Event
-      </button>
-      <button
-        onClick={handleGetMetricsClick}
-        className={`${
-          isLoading ? 'opacity-50 cursor-not-allowed' : ''
-        } bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full shadow-md`}
-      >
-        GET Metrics
-      </button>
-      {/* Display metrics data if available */}
-      {metricsData && (
-        <div>
-          <h2>Metrics Data:</h2>
-          <p>Country Count: {JSON.stringify(metricsData.countryCount)}</p>
-          <p>Device Count: {JSON.stringify(metricsData.deviceCount)}</p>
-          {Object.keys(metricsData.timeseries).length > 0 ? (
-            <div>
-              <p>Timeseries(UTC):</p>
-              <ul>
-                {Object.keys(metricsData.timeseries).reverse().map((timestamp:any, index) => (
-                  <li key={index}>
-                    {`Time: ${metricsData.timeseries[timestamp].time}, Total Opens: ${metricsData.timeseries[timestamp].totalOpens}`}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <p>Grab Time Series</p>
-          )}
-        </div>
-      )}
+      <h1>Login</h1>
+      <p>Please log in to continue.</p>
+      <Link href="/api/auth/login">Log in with Auth0</Link>
     </div>
   );
 }

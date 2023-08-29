@@ -18,7 +18,8 @@
 }
 
 body {
-  padding: 8px;
+  margin: 0;
+  padding: 0;
 }
 @layer base {
   /* Button CSS */
