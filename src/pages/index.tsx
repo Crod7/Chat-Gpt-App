@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import data from '../../lib/testEvent';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 interface TimeseriesData {
   [timestamp: string]: {
@@ -15,6 +16,7 @@ interface MetricsData {
 }
 
 export default function Home() {
+  const { user, error } = useUser();
   const [isLoading, setIsLoading] = useState(false);
   const [metricsData, setMetricsData] = useState<MetricsData | null>(null);
 
@@ -61,6 +63,8 @@ export default function Home() {
 
   return (
     <div>
+      <a href="/api/auth/login">Login</a>
+      <a href="/api/auth/logout">Logout</a>
       <button
         onClick={handlePostEventClick}
         className={`${
