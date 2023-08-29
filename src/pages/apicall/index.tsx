@@ -29,7 +29,7 @@ export default function Home() {
     // Update the timestamp to the current time before sending
     const eventData = {
       ...data,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
 
     try {
@@ -39,7 +39,7 @@ export default function Home() {
       console.error('Error posting event:', error);
     } finally {
       setIsLoading(false); // Stop loading
-      handleGetMetricsClick()
+      handleGetMetricsClick();
     }
   };
 
@@ -59,8 +59,6 @@ export default function Home() {
       setIsLoading(false); // Stop loading
     }
   };
-
-
 
   return (
     <div>
@@ -90,11 +88,13 @@ export default function Home() {
             <div>
               <p>Timeseries(UTC):</p>
               <ul>
-                {Object.keys(metricsData.timeseries).reverse().map((timestamp:any, index) => (
-                  <li key={index}>
-                    {`Time: ${metricsData.timeseries[timestamp].time}, Total Opens: ${metricsData.timeseries[timestamp].totalOpens}`}
-                  </li>
-                ))}
+                {Object.keys(metricsData.timeseries)
+                  .reverse()
+                  .map((timestamp: any, index) => (
+                    <li key={index}>
+                      {`Time: ${metricsData.timeseries[timestamp].time}, Total Opens: ${metricsData.timeseries[timestamp].totalOpens}`}
+                    </li>
+                  ))}
               </ul>
             </div>
           ) : (

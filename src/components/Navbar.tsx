@@ -25,12 +25,11 @@ function Navbar() {
             </li>
           </>
         ) : (
-          <div className='flex items-center'>
+          <div className="flex items-center">
             <li>
-              <Link 
+              <Link
                 href="/api/auth/login"
-                className="text-white border border-white border-opacity-40 hover:border-opacity-100 rounded px-3 py-1 font-bold"         
-                 
+                className="text-white border border-white border-opacity-40 hover:border-opacity-100 rounded px-3 py-1 font-bold"
               >
                 Login
               </Link>
@@ -49,7 +48,7 @@ function Navbar() {
           )}
           <Link
             href="/api/auth/logout"
-            className="text-white border border-white border-opacity-40 hover:border-opacity-100 rounded px-3 py-1 font-bold"          
+            className="text-white border border-white border-opacity-40 hover:border-opacity-100 rounded px-3 py-1 font-bold"
           >
             Logout
           </Link>

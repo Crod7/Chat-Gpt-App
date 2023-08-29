@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const eventSchema = new mongoose.Schema({
   ab_test_id: String,
@@ -60,7 +60,7 @@ const eventSchema = new mongoose.Schema({
     is_proxy: Boolean,
     is_prefetched: Boolean,
   },
-})
+});
 
-const Event = mongoose.model("Event", eventSchema);
+const Event = mongoose.model('Event', eventSchema);
 export default Event;
