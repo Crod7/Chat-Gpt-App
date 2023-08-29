@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint-next": "next lint",
+    "prettify": "prettier --write .",
+    "format": "npm run prettify",
+    "lint-precommit": "npm run format"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.1.0",
@@ -27,5 +30,18 @@
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-precommit"
+    }
+  },
+  "lint-staged": {
+    "*": "npm run format"
   }
 }
