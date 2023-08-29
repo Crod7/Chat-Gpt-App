@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import data from '../../lib/testEvent';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Link from 'next/link';
 
 interface TimeseriesData {
   [timestamp: string]: {
@@ -63,8 +64,8 @@ export default function Home() {
 
   return (
     <div>
-      <a href="/api/auth/login">Login</a>
-      <a href="/api/auth/logout">Logout</a>
+      <Link href="/api/auth/login">Login</Link>
+      <Link href="/api/auth/logout">Logout</Link>
       <button
         onClick={handlePostEventClick}
         className={`${
