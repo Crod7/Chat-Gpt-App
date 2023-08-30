@@ -1,47 +1,68 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import data from '../../lib/testEvent';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
-
-interface TimeseriesData {
-  [timestamp: string]: {
-    totalOpens: number;
-    time: string;
-  };
-}
-interface MetricsData {
-  countryCount: any;
-  deviceCount: any;
-  timeseries: TimeseriesData;
-}
+import router from 'next/router';
 
 export default function LoginPage() {
   const { user, error, isLoading } = useUser();
+
+  // If user is already authenticated, redirect to the dashboard or another page
+  useEffect(() => {
+    if (user) {
+      router.push('/apicall');
+    }
+  }, [user, router]);
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
+  // Used for user registration if not in database
+  const registerUser = async () => {
+    try {
+      const userData = {
+        nickname: user?.nickname,
+        family_name: user?.family_name,
+        given_name: user?.given_name,
+        picture: user?.picture,
+      };
+      const registerResponse = await axios.post('/api/user/set_user', {
+        user: userData,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
-  if (user) {
-    // User is already authenticated, redirect them to the home page or dashboard
-    return (
-      <div>
-        <p>Welcome, {user.name}!</p>
-        <Link href="/dashboard">Go to Dashboard</Link>
-      </div>
-    );
-  }
-
   return (
-    <div>
-      <h1>Login</h1>
-      <p>Please log in to continue.</p>
-      <Link href="/api/auth/login">Log in with Auth0</Link>
+    <div className="login-container">
+      <div className="login-box">
+        <div className="top-section">
+          <h1 className="login-title">Choose a Login Method</h1>
+        </div>
+        <div className="bottom-section">
+          <div className="left">
+            <Link className="login-button" href="/api/auth/login">
+              AuthO Login
+            </Link>
+          </div>
+          <div className="center">
+            <div className="line" />
+            <div className="or">OR</div>
+          </div>
+          <div className="right">
+            <Link className="login-button" href="/api/auth/login">
+              Try w/out Login
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

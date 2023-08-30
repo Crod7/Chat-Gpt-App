@@ -1,0 +1,138 @@
+.login-container {
+  height: calc(100vh - 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  min-width: 600px;
+  min-height: 400px;
+  width: 60%;
+  height: 75%;
+  -webkit-box-shadow: 0px 5px 33px -21px rgb(0, 0, 0);
+  -moz-box-shadow: 0px 5px 33px -21px rgb(0, 0, 0);
+  box-shadow: 0px 5px 33px -21px rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.top-section {
+  order: 1;
+  height: 30%;
+  margin-top: 50px;
+}
+
+.bottom-section {
+  order: 2;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.left,
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px;
+}
+
+.center {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.or {
+  border: 2px solid var(--secondaryFont);
+  border-radius: 50%;
+  padding: 10px;
+  color: gray;
+  background-color: white;
+  font-weight: bold;
+}
+
+.line {
+  width: 2px;
+  height: 70%;
+  background-color: var(--secondaryFont);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: -1;
+}
+
+.login-button {
+  width: 100%;
+  padding: 15px 25% 15px 25%;
+  border-radius: 5px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background-color: var(--buttonBackground);
+  border: 2px solid var(--accent);
+}
+
+.login-submit {
+  width: 100%;
+  background-color: var(--secondary);
+  color: var(--primaryFont);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  padding: 15px 20px;
+  border-radius: 5px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.login-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--secondaryFont);
+}
+
+.need-an-account-text {
+  margin-top: 16px;
+}
+.link-to-create-account-text {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 767px) {
+  .login-box {
+    -webkit-box-shadow: 0px 5px 33px -21px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0px 5px 33px -21px rgba(0, 0, 0, 0);
+    box-shadow: 0px 5px 33px -21px rgba(0, 0, 0, 0);
+  }
+  .bottom-section {
+    flex-direction: column;
+  }
+  .login-button {
+    width: 150%;
+  }
+}

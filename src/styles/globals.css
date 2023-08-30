@@ -1,8 +1,20 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('./login.css');
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --text-color: rgb(57, 57, 255);
+  --primary: white;
+  --secondary: #16165b;
+  --accent: rgb(58, 215, 110);
+  --buttonBackground: white;
+  --primaryFont: white;
+  --secondaryFont: rgb(177, 177, 177);
+  --blackFont: black;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,8 +26,7 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  padding: 8px;
 }
 @layer base {
   /* Button CSS */
