@@ -12,7 +12,7 @@ export default function LoginPage() {
   // If user is already authenticated, redirect to the dashboard or another page
   useEffect(() => {
     if (user) {
-      router.push('/apicall');
+      router.push('/home');
     }
   }, [user, router]);
 
