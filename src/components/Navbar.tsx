@@ -6,7 +6,7 @@ function Navbar() {
   const { user, error, isLoading } = useUser();
 
   if (isLoading) {
-    return <div>...</div>;
+    return <div></div>;
   }
 
   return (

@@ -4,6 +4,7 @@ import data from '../../lib/testEvent';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
 import router from 'next/router';
+import LoadingScreen from '../components/LoadingScreen';
 
 export default function LoginPage() {
   const { user, error, isLoading } = useUser();
@@ -16,7 +17,12 @@ export default function LoginPage() {
   }, [user, router]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <LoadingScreen/>
+      </div>
+    )
+
   }
 
   // Used for user registration if not in database

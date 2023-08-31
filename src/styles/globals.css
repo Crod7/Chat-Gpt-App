@@ -1,7 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import url('./login.css');
+@import url('./components/login.css');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -26,7 +26,8 @@
 }
 
 body {
-  padding: 8px;
+  padding: 0px;
+  margin: 0px;
 }
 @layer base {
   /* Button CSS */
