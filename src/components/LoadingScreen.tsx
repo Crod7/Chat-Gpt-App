@@ -2,7 +2,7 @@ import React from 'react';
 
 function LoadingScreen() {
   return (
-    <div>
+    <div className='loading-screen'>
       <img
         src={'/assets/loadingElement.png'}
         alt="none"

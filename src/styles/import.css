@@ -1,2 +1,5 @@
+/* Pages*/
 @import url('./pages/login.css');
+
+/* Components*/
 @import url('./components/LoadingScreen.css');
