@@ -5,8 +5,12 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+
+
 // OpenAI's memory of the conversation, to later be stored on DB
 const conversation = [];
+
+
 
 export default async function (req, res) {
   // Open API Key returns 500 if key is invalid
@@ -20,6 +24,8 @@ export default async function (req, res) {
     return;
   }
 
+
+
   // Checks to see if user input is valid
   const input = req.body.input || '';
   if (input.trim().length === 0) {
@@ -31,22 +37,21 @@ export default async function (req, res) {
     return;
   }
 
+
+
   // Sends user input to api and awaits for response from OpenAI
   try {
-    conversation.push(`user: ${input}`);
-
+    conversation.push(`user: ${input}`); // input added to conversation
     const completion = await openai.createCompletion({
-      model: 'text-davinci-003', // The most affordable option
-      prompt: generatePrompt(input),
+      model: 'text-davinci-003',
+      prompt: generatePrompt(input), // calls function to view and respond to conversation
       temperature: 0.6,
     });
-    console.log(conversation);
+    conversation.push(`ai: ${completion.data.choices[0].text}`); // takes ai response and adds it to conversation
+    res.status(200).json({ result: completion.data.choices[0].text }); // returns ai response
 
-    conversation.push(`ai: ${completion.data.choices[0].text}`);
 
-    console.log(conversation);
-    res.status(200).json({ result: completion.data.choices[0].text });
-    //res.status(200).json({conversation})
+
   } catch (error) {
     if (error.response) {
       console.error(error.response.status, error.resposne.data);
@@ -62,15 +67,15 @@ export default async function (req, res) {
   }
 }
 
+
+
+// Generates the prompt to OpenAI by mapping the entire conversation from the array so that
+// OpenAI has the context of the entire discussion and can respond accordingly
 function generatePrompt(input) {
   const capitalizedInput =
     input[0].toUpperCase() + input.slice(1).toLowerCase();
-  // add conversation array here, depending on the number of strings in my arragy,  append them to the return so that the AI knows
-  // the previous conversation
   const conversationPrompt = conversation.map((item) => `${item}\n`).join('');
   return `
   ${conversationPrompt}${capitalizedInput}
   `;
 }
-
-// 0.002079
