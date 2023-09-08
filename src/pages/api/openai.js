@@ -6,13 +6,13 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 
-
+// OpenAI's memory of the conversation, to later be stored on DB
+const conversation = [];
 
 export default async function (req, res) {
 
 
-  // OpenAI's memory of the conversation, to later be stored on DB
-  const conversation = [];
+
 
 
   // Open API Key returns 500 if key is invalid
@@ -40,12 +40,18 @@ export default async function (req, res) {
 
   // Sends user input to api and awaits for response from OpenAI
   try{
+    conversation.push(`user: ${input}`);
+
     const completion = await openai.createCompletion({
       model: "text-davinci-003", // The most affordable option
       prompt: generatePrompt(input),
       temperature: 0.6,
     });
     console.log(conversation);
+
+    conversation.push(`ai: ${completion.data.choices[0].text}`);
+
+    console.log(conversation)
     res.status(200).json({ result: completion.data.choices[0].text });
     //res.status(200).json({conversation})
   } catch(error) {
@@ -66,9 +72,12 @@ export default async function (req, res) {
 function generatePrompt(input) {
   const capitalizedInput =
     input[0].toUpperCase() + input.slice(1).toLowerCase();
-  return `
-  ${capitalizedInput}
-  `;
+    // add conversation array here, depending on the number of strings in my arragy,  append them to the return so that the AI knows 
+    // the previous conversation
+  const conversationPrompt = conversation.map((item) => `${item}\n`).join('');
+  return (`
+  ${conversationPrompt}${capitalizedInput}
+  `);
 }
 
 // 0.002079
