@@ -5,12 +5,8 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-
-
 // OpenAI's memory of the conversation, to later be stored on DB
 const conversation = [];
-
-
 
 export default async function (req, res) {
   // Open API Key returns 500 if key is invalid
@@ -24,8 +20,6 @@ export default async function (req, res) {
     return;
   }
 
-
-
   // Checks to see if user input is valid
   const input = req.body.input || '';
   if (input.trim().length === 0) {
@@ -37,8 +31,6 @@ export default async function (req, res) {
     return;
   }
 
-
-
   // Sends user input to api and awaits for response from OpenAI
   try {
     conversation.push(`user: ${input}`); // input added to conversation
@@ -49,9 +41,6 @@ export default async function (req, res) {
     });
     conversation.push(`ai: ${completion.data.choices[0].text}`); // takes ai response and adds it to conversation
     res.status(200).json({ result: completion.data.choices[0].text }); // returns ai response
-
-
-
   } catch (error) {
     if (error.response) {
       console.error(error.response.status, error.resposne.data);
@@ -67,8 +56,6 @@ export default async function (req, res) {
   }
 }
 
-
-
 // Generates the prompt to OpenAI by mapping the entire conversation from the array so that
 // OpenAI has the context of the entire discussion and can respond accordingly
 function generatePrompt(input) {
@@ -76,6 +63,7 @@ function generatePrompt(input) {
     input[0].toUpperCase() + input.slice(1).toLowerCase();
   const conversationPrompt = conversation.map((item) => `${item}\n`).join('');
   return `
+  Respond without using ai: to the following conversation. \n
   ${conversationPrompt}${capitalizedInput}
   `;
 }

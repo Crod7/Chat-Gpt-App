@@ -11,7 +11,7 @@ function Navbar() {
 
   return (
     <nav className="bg-blue-500 py-3 px-6 flex justify-between items-center">
-      <ul className="flex items-center space-x-6 text-white ml-auto">
+      <ul className="flex items-center space-x-6 text-white ml-auto mr-10">
         <li>
           <Link href="/">Home</Link>
         </li>
