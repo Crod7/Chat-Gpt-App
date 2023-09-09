@@ -33,14 +33,22 @@ export default async function (req, res) {
 
   // Sends user input to api and awaits for response from OpenAI
   try {
+    
     conversation.push(`user: ${input}`); // input added to conversation
+
+    // BELOW IS THE OPENAI CALL WE WILL USE A TEST RESPOSNE TO SAVE MONEY
+    /*
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
       prompt: generatePrompt(input), // calls function to view and respond to conversation
       temperature: 0.6,
-    });
-    conversation.push(`ai: ${completion.data.choices[0].text}`); // takes ai response and adds it to conversation
-    res.status(200).json({ result: completion.data.choices[0].text }); // returns ai response
+    });*/
+    // ACTUAL OPENAI GENERATION AND RESPONSE
+    //conversation.push(`ai: ${completion.data.choices[0].text}`); // takes ai response and adds it to conversation
+    //res.status(200).json({ result: completion.data.choices[0].text }); // returns ai response
+    // TEST RESPONSE
+    conversation.push(`ai: test`);
+    res.status(200).json({result: conversation});
   } catch (error) {
     if (error.response) {
       console.error(error.response.status, error.resposne.data);

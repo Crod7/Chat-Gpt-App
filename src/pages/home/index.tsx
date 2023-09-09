@@ -3,5 +3,9 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import ChatBox from '@/src/components/ChatBox';
 
 export default function Home() {
-  return <ChatBox />;
+  return (
+    <div>
+      <ChatBox/>
+    </div>
+  )
 }

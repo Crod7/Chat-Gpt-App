@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Conversation from './Conversation';
 
+
+// ChatBox found on home page
 function ChatBox() {
-  const { user, error } = useUser();
+  const {user, error} = useUser();
   const [isLoading, setIsLoading] = useState(false);
-
   const [userInput, setUserInput] = useState('');
   const [result, setResult] = useState('');
+  const [conversation, setConversation] = useState('');
 
+
+  // Submits user input and gets OpenAI response
   async function onSubmit(event: { preventDefault: () => void }) {
     event.preventDefault();
     try {
-      // We attempt to send the users input to openai for a resposne
       const response = await fetch('/api/openai', {
         method: 'POST',
         headers: {
@@ -19,7 +23,6 @@ function ChatBox() {
         },
         body: JSON.stringify({ input: userInput }),
       });
-
       const data = await response.json();
       if (response.status !== 200) {
         throw (
@@ -27,30 +30,41 @@ function ChatBox() {
           new Error(`Request failed with status ${response.status}`)
         );
       }
-
-      setResult(data.result);
+      setConversation(data.result);
       setUserInput('');
     } catch (error) {
       console.log(error);
-      //alert(error.message);
     }
   }
 
-  return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          name="animal"
-          placeholder="Enter an animal"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-        />
-        <input type="submit" value="Generate names" />
-      </form>
 
-      <div>{result}</div>
-    </div>
+
+  return (
+      <div className='
+      border: border border-black-500 m-5 rounded-lg p-4 shadow-md p-4 
+      background-color: bg-gradient-to-b from-blue-500 to-blue-900 text-white p-4 
+      space: flex flex-col justify-between items-center       
+      '>
+        <form onSubmit={onSubmit} className='w-full'>
+          <input
+            type="text"
+            name="chatbot"
+            placeholder="Ask a question"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+          />
+          <input 
+            type="submit" 
+            value="Generate names" 
+            className='bg-blue-500 text-white p-2 mt-4 rounded-md hover:bg-blue-600 cursor-pointer'
+          />
+        </form>
+        <div>
+        <Conversation conversation={Array.isArray(conversation) ? conversation : [conversation]} /></div>
+
+      </div>
+
+
   );
 }
 

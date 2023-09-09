@@ -19,6 +19,8 @@ AUTH0_BASE_URL=http://localhost:3000
 AUTH0_ISSUER_BASE_URL='https://dev-[this is from your auth0 account].us.auth0.com'
 AUTH0_CLIENT_ID='your auth0 id'
 AUTH0_CLIENT_SECRET='your auth0 secret'
+
+OPENAI_API_KEY='your own api key from openai'
 ```
 
 Finally, run
