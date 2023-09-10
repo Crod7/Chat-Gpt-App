@@ -8,7 +8,6 @@ function ChatBox() {
   const {user, error} = useUser();
   const [isLoading, setIsLoading] = useState(false);
   const [userInput, setUserInput] = useState('');
-  const [result, setResult] = useState('');
   const [conversation, setConversation] = useState('');
 
 
@@ -43,8 +42,16 @@ function ChatBox() {
       <div className='
       border: border border-black-500 m-5 rounded-lg p-4 shadow-md p-4 
       background-color: bg-gradient-to-b from-blue-500 to-blue-900 text-white p-4 
-      space: flex flex-col justify-between items-center       
+      space: flex flex-col bottom-1     
       '>
+                
+
+        {/* Holds the messages between user and ai */}
+        <div>
+          <Conversation conversation={Array.isArray(conversation) ? conversation : [conversation]} />
+        </div>
+
+
         <form onSubmit={onSubmit} className='w-full'>
           <input
             type="text"
@@ -59,9 +66,6 @@ function ChatBox() {
             className='bg-blue-500 text-white p-2 mt-4 rounded-md hover:bg-blue-600 cursor-pointer'
           />
         </form>
-        <div>
-        <Conversation conversation={Array.isArray(conversation) ? conversation : [conversation]} /></div>
-
       </div>
 
 
