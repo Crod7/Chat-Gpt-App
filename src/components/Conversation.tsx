@@ -17,9 +17,11 @@ const Conversation: React.FC<ConversationProps> = ({ conversation }) => {
         <div key={index} className="flex justify-start items-center"> {/* flex makes img stand next to message*/}
 
           {message.substring(0,2) === 'us' && user ? (
-            <img src={user.picture || defaultImage} alt='User' className='w-8 h-8 rounded-full mr-2' />
+            <img src={user.picture || defaultImage} alt='User' className='w-12 h-12 rounded-full m-2' />
           ) : null}
-
+          {message.substring(0,2) === 'ai' && user ? (
+            <img src={'/assets/aiIcon.png' || defaultImage} alt='User' className='w-12 h-12 rounded-full m-2' />
+          ) : null}
 
           {message}
         </div>

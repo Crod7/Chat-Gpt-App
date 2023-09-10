@@ -8,12 +8,13 @@ function ChatBox() {
   const {user, error} = useUser();
   const [isLoading, setIsLoading] = useState(false);
   const [userInput, setUserInput] = useState('');
-  const [conversation, setConversation] = useState('');
+  const [conversation, setConversation] = useState([]);
 
 
   // Submits user input and gets OpenAI response
   async function onSubmit(event: { preventDefault: () => void }) {
     event.preventDefault();
+
     try {
       const response = await fetch('/api/openai', {
         method: 'POST',
@@ -30,6 +31,7 @@ function ChatBox() {
         );
       }
       setConversation(data.result);
+      console.log(conversation)
       setUserInput('');
     } catch (error) {
       console.log(error);
