@@ -5,9 +5,6 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-// OpenAI's memory of the conversation, to later be stored on DB
-const conversation = [];
-
 export default async function (req, res) {
   // Open API Key returns 500 if key is invalid
   if (!configuration.apiKey) {
@@ -34,19 +31,24 @@ export default async function (req, res) {
   // Sends user input to api and awaits for response from OpenAI
   try {
     
-    conversation.push(`user: ${input}`); // input added to conversation
+    //conversation.push(`user: ${input}`); // input added to conversation
 
     // BELOW IS THE OPENAI CALL WE WILL USE A TEST RESPOSNE TO SAVE MONEY
-    
+    /*
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
       prompt: generatePrompt(input), // calls function to view and respond to conversation
       temperature: 0.6,
-    });
+    });*/
     // ACTUAL OPENAI GENERATION AND RESPONSE
-    conversation.push(`ai: ${completion.data.choices[0].text}`); // takes ai response and adds it to conversation
-    res.status(200).json({ result: conversation }); // returns ai response
-    // TEST RESPONSE
+    //conversation.push(`ai: ${completion.data.choices[0].text}`); // takes ai response and adds it to conversation
+    // Introduce a delay using setTimeout (e.g., 5 seconds)
+    const delayInSeconds = 3;
+    setTimeout(() => {
+      // After the delay, send the AI response
+      //res.status(200).json({ result: `ai: ${completion.data.choices[0].text}` });
+      res.status(200).json({result: `ai: test`});
+    }, delayInSeconds * 1000); // Convert seconds to milliseconds    // TEST RESPONSE
     /*
     conversation.push(`ai: test`);
     res.status(200).json({result: conversation});*/
@@ -68,11 +70,10 @@ export default async function (req, res) {
 // Generates the prompt to OpenAI by mapping the entire conversation from the array so that
 // OpenAI has the context of the entire discussion and can respond accordingly
 function generatePrompt(input) {
-  const capitalizedInput =
-    input[0].toUpperCase() + input.slice(1).toLowerCase();
-  const conversationPrompt = conversation.map((item) => `${item}\n`).join('');
+  console.log(input)
+  //const conversationPrompt = input.map((item) => `${item}\n`).join('');
   return `
-  Respond without using ai: to the following conversation. \n
-  ${conversationPrompt}${capitalizedInput}
+  Respond never using 'ai:' to the following conversation.
+  ${input}
   `;
 }
