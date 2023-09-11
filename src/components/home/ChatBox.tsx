@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Conversation from './Conversation';
+
+
+
 interface Message {
   text: string;
 }
@@ -15,14 +18,18 @@ function ChatBox() {
 
   // Submits user input and gets OpenAI response
   async function onSubmit(event: { preventDefault: () => void }) {
-    // disables page reload, must be before isLoading
+    // Disables page reload, must be before isLoading
     event.preventDefault();
 
-    // disables multipress to negate bug
+    // Disables multipress to negate bug
     if (isLoading){
       return;
     }
+    // Creates loading element while waiting for function to complete
     setIsLoading(true);
+
+
+
     // Submits user message to conversation component while waiting for response
     const newMessage: Message = { text: `user: ${userInput}`};
     const updatedConversation = [...conversation, newMessage];
@@ -65,7 +72,7 @@ function ChatBox() {
       <div className='
       border: border border-black-500 m-5 rounded-lg p-4 shadow-md p-4 
       background-color: bg-gradient-to-b from-blue-500 to-blue-900 text-white p-4 
-      space: flex flex-col bottom-1     
+      space: flex flex-col bottom-1 
       '>
                 
 
@@ -78,8 +85,8 @@ function ChatBox() {
             <img src='/assets/loadingElement.png' className='loading-element m-2 ml-16'></img>
           </div>
         )}
-
-        <div>
+        {/* Manages the Input Box */}
+        <div className=''>
           <form onSubmit={onSubmit} className='w-full'>
             <input
               type="text"
@@ -91,8 +98,8 @@ function ChatBox() {
               className="text-white bg-transparent border border-black rounded-md p-2 mt-4 hover:border-blue-600 focus:border-blue-600 outline-none"            />
             <input 
               type="submit" 
-              value="Generate names" 
-              className='bg-green-500 text-white p-2 mt-4 rounded-md hover:bg-blue-600 cursor-pointer'
+              value="Go" 
+              className='absolute right-8 w-[10%] bg-green-500 text-white p-2 mt-4 rounded-md hover:bg-blue-600 cursor-pointer'
             />
           </form>
         </div>
