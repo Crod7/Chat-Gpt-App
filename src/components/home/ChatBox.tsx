@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Conversation from './Conversation';
+import LoadingElement from '../LoadingElement';
 
 interface Message {
   text: string;
@@ -62,49 +63,41 @@ function ChatBox() {
   }
 
   return (
-    <div
-      className="
-      border: border border-black-500 m-0 rounded-lg p-4 shadow-md p-4 
-      background-color: bg-gradient-to-b from-blue-500 to-blue-900 text-white 
-      space: flex flex-col bottom-1
-      "
-    >
-      {/* Holds the messages between user and ai */}
-      <div>
-        <Conversation
-          conversation={
-            Array.isArray(conversation) ? conversation : [conversation]
-          }
-        />
-      </div>
-      {isLoading && (
-        <div>
-          <img
-            src="/assets/loadingElement.png"
-            className="loading-element m-2 ml-16"
-          ></img>
-        </div>
-      )}
-      {/* Manages the Input Box */}
-      <div className="">
-        <form onSubmit={onSubmit} className="w-full">
-          <input
-            type="text"
-            name="chatbot"
-            placeholder="Ask a question"
-            autoComplete="off"
-            value={userInput}
-            onChange={(e) => setUserInput(e.target.value)}
-            className="text-white w-[100%] bg-transparent border border-black rounded-md p-2 mt-4 hover:border-blue-600 focus:border-blue-600 outline-none"
-          />
-          <input
-            type="submit"
-            value="Go"
-            className="absolute right-0 w-[8%] bg-green-500 text-white p-2 mt-4 rounded-md hover:bg-blue-600 cursor-pointer"
-          />
-        </form>
-      </div>
+<div className="chat-box">
+  {/* Holds the messages between user and ai */}
+  <div>
+    <Conversation
+      conversation={
+        Array.isArray(conversation) ? conversation : [conversation]
+      }
+    />
+  </div>
+  {isLoading && (
+    <div>
+      <LoadingElement/>
     </div>
+  )}
+  {/* Manages the Input Box */}
+  <div className="form-container">
+    <form onSubmit={onSubmit}>
+      <input
+        type="text"
+        name="chatbot"
+        placeholder="Ask a question"
+        autoComplete="off"
+        value={userInput}
+        onChange={(e) => setUserInput(e.target.value)}
+        className="input-box"
+      />
+      <input
+        type="submit"
+        value="Go"
+        className="submit-button"
+      />
+    </form>
+  </div>
+</div>
+
   );
 }
 

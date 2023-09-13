@@ -1,0 +1,50 @@
+/* ChatBox.css */
+
+/* Styles for the main container */
+.chat-box {
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, #0045f2 to #9698ff);
+    color: var(--primaryFont);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 1px;
+  }
+  
+  /* Styles for the loading element */
+  .loading-element {
+    margin: 2px;
+    margin-left: 16px;
+  }
+  
+  /* Styles for the input box */
+  .form-container {
+    width: 100%;
+  }
+  
+  .input-box {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 16px;
+  }
+  
+  .submit-button {
+    position: absolute;
+    right: 0;
+    width: 8%;
+    background: #0f0;
+    color: #fff;
+    padding: 8px;
+    margin-top: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Add more styles as needed */
+  

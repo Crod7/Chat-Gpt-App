@@ -15,6 +15,10 @@
   --primaryFont: white;
   --secondaryFont: rgb(177, 177, 177);
   --blackFont: black;
+
+  --gradientBackground: linear-gradient(to bottom, #0045f2 to #9698ff);
+  --primaryFont: black;
+  --secondaryFont:white;
 }
 
 @media (prefers-color-scheme: dark) {

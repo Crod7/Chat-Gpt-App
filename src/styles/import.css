@@ -3,6 +3,7 @@
 
 /* Components*/
 @import url('./components/LoadingScreen.css');
+@import url('./components/ChatBox.css');
 
 /* Containers */
 @import url('./containers/HomeContainer.css')
