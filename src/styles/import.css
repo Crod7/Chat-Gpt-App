@@ -3,3 +3,13 @@
 
 /* Components*/
 @import url('./components/LoadingScreen.css');
+
+/* Containers */
+@import url('./containers/HomeContainer.css')
+
+/*
+STILL NEED TO TRANSFER FROM TAILWIND TO CSS
+chatbox
+conversation
+navbar
+*/

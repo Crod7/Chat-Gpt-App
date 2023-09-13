@@ -29,50 +29,9 @@ body {
   padding: 0px;
   margin: 0px;
 }
-@layer base {
-  /* Button CSS */
-  .button-center {
-    display: grid;
-    place-content: center;
-  }
-  .button-box {
-    color: var(--text-color);
-    border: 2px solid var(--text-color);
-    border-radius: 8px;
-    padding: 8px;
-  }
-  /* Controls image sizes for details page and fish select page */
-  .image-full {
-    width: 100vw;
-    max-width: 600px;
-    border-radius: 12px;
-  }
-  .image-small {
-    border-radius: 12px;
-  }
-  /* Conrols the layout of the different pages */
-  .details-page-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
-    min-height: 100vh;
-  }
 
-  .fish-select-page-layout {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    justify-content: center;
-  }
-  @media (max-width: 767px) {
-    .fish-select-page-layout {
-      grid-template-columns: 1fr;
-    }
-  }
-  .name-text {
-    color: var(--text-color);
-    font-weight: bold;
-    font-size: 7vh;
-    text-decoration: underline;
-  }
-}
+
+
+  
+
+

@@ -64,9 +64,9 @@ function ChatBox() {
   return (
     <div
       className="
-      border: border border-black-500 m-5 rounded-lg p-4 shadow-md p-4 
-      background-color: bg-gradient-to-b from-blue-500 to-blue-900 text-white p-4 
-      space: flex flex-col bottom-1 
+      border: border border-black-500 m-0 rounded-lg p-4 shadow-md p-4 
+      background-color: bg-gradient-to-b from-blue-500 to-blue-900 text-white 
+      space: flex flex-col bottom-1
       "
     >
       {/* Holds the messages between user and ai */}
@@ -95,12 +95,12 @@ function ChatBox() {
             autoComplete="off"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
-            className="text-white bg-transparent border border-black rounded-md p-2 mt-4 hover:border-blue-600 focus:border-blue-600 outline-none"
+            className="text-white w-[100%] bg-transparent border border-black rounded-md p-2 mt-4 hover:border-blue-600 focus:border-blue-600 outline-none"
           />
           <input
             type="submit"
             value="Go"
-            className="absolute right-8 w-[10%] bg-green-500 text-white p-2 mt-4 rounded-md hover:bg-blue-600 cursor-pointer"
+            className="absolute right-0 w-[8%] bg-green-500 text-white p-2 mt-4 rounded-md hover:bg-blue-600 cursor-pointer"
           />
         </form>
       </div>
