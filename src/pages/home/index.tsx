@@ -5,7 +5,7 @@ import ChatBox from '@/src/components/home/ChatBox';
 export default function Home() {
   return (
     <div>
-      <ChatBox/>
+      <ChatBox />
     </div>
-  )
+  );
 }

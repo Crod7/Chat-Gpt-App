@@ -30,7 +30,6 @@ export default async function (req, res) {
 
   // Sends user input to api and awaits for response from OpenAI
   try {
-    
     //conversation.push(`user: ${input}`); // input added to conversation
 
     // BELOW IS THE OPENAI CALL WE WILL USE A TEST RESPOSNE TO SAVE MONEY
@@ -47,7 +46,7 @@ export default async function (req, res) {
     setTimeout(() => {
       // After the delay, send the AI response
       //res.status(200).json({ result: `ai: ${completion.data.choices[0].text}` });
-      res.status(200).json({result: `ai: test`});
+      res.status(200).json({ result: `ai: test` });
     }, delayInSeconds * 1000); // Convert seconds to milliseconds    // TEST RESPONSE
     /*
     conversation.push(`ai: test`);
@@ -70,7 +69,7 @@ export default async function (req, res) {
 // Generates the prompt to OpenAI by mapping the entire conversation from the array so that
 // OpenAI has the context of the entire discussion and can respond accordingly
 function generatePrompt(input) {
-  console.log(input)
+  console.log(input);
   //const conversationPrompt = input.map((item) => `${item}\n`).join('');
   return `
   Respond never using 'ai:' to the following conversation.
