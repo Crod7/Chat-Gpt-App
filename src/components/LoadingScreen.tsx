@@ -1,13 +1,10 @@
 import React from 'react';
+import LoadingElement from './LoadingElement';
 
 function LoadingScreen() {
   return (
     <div className="loading-screen">
-      <img
-        src={'/assets/loadingElement.png'}
-        alt="none"
-        className="loading-element"
-      />
+      <LoadingElement/>
     </div>
   );
 }

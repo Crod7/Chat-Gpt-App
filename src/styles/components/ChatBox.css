@@ -4,14 +4,14 @@
 .chat-box {
     border: 1px solid #000;
     border-radius: 4px;
-    padding: 16px;
+    padding: 0px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to bottom, #0045f2 to #9698ff);
     color: var(--primaryFont);
     display: flex;
     flex-direction: column;
     position: absolute;
-    bottom: 1px;
+    width: 100vw;
   }
   
   /* Styles for the loading element */

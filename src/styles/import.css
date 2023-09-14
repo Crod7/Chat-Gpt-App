@@ -4,13 +4,15 @@
 /* Components*/
 @import url('./components/LoadingScreen.css');
 @import url('./components/ChatBox.css');
+@import url('./components/LoadingElement.css');
+
+
 
 /* Containers */
 @import url('./containers/HomeContainer.css')
 
 /*
 STILL NEED TO TRANSFER FROM TAILWIND TO CSS
-chatbox
 conversation
 navbar
 */
