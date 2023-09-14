@@ -4,7 +4,6 @@
 .chat-box {
     border-radius: 4px;
     padding: 0px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     color: var(--primaryFont);
     width: 100vw;
     height: 89vh;
@@ -27,6 +26,10 @@
     width: 80%;
     border-radius: 8px;
     padding: 8px;
+  }
+
+  .input-box:focus {
+    outline: none;
   }
   
   .submit-button-chatbox {

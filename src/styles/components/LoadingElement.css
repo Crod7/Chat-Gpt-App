@@ -1,5 +1,7 @@
 .loading-element {
     animation: rotate 0.5s linear infinite;
+    margin-left: 4rem;
+    margin-top: 0.75rem;
   }
   
   @keyframes rotate {

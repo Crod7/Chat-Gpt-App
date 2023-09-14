@@ -1,3 +1,5 @@
+/* Import all css files here, then import this to global*/
+
 /* Pages*/
 @import url('./pages/login.css');
 
@@ -5,14 +7,11 @@
 @import url('./components/LoadingScreen.css');
 @import url('./components/ChatBox.css');
 @import url('./components/LoadingElement.css');
-
+@import url('./components/Conversation.css');
+@import url('./components/Navbar.css');
 
 
 /* Containers */
 @import url('./containers/HomeContainer.css')
 
-/*
-STILL NEED TO TRANSFER FROM TAILWIND TO CSS
-conversation
-navbar
-*/
+

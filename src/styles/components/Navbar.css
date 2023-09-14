@@ -1,0 +1,60 @@
+/* Navbar.css */
+
+.navbar {
+    background: linear-gradient(to bottom, #5a91ff, #002299);
+    color: white;
+    padding: 0.5rem 2rem;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    margin-left: 1.5rem;
+  }
+  
+  .login-link,
+  .logout-link {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    margin: 2px;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: border-opacity 0.3s;
+  }
+  
+  .login-link:hover,
+  .logout-link:hover {
+    border: 1px solid rgb(255, 255, 255);
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+  
+
+/* Custom class for the outer wrapper of login-related elements */
+.login-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Custom class for the outer wrapper of user-related elements */
+  .user-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  

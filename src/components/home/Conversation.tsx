@@ -16,23 +16,21 @@ const Conversation: React.FC<ConversationProps> = ({ conversation }) => {
   const defaultImage = '/image.png';
 
   return (
-    <div className="flex-col justify-start">
-      {/* Use flex-col to stack items vertically */}
+    <div className="conversation-container">
       {conversation.map((message: Message, index: number) => (
-        <div key={index} className="flex justify-start items-center">
-          {/* flex makes img stand next to the message */}
+        <div key={index} className="message-container">
           {message.text.substring(0, 2) === 'us' && user ? (
             <img
               src={user.picture || defaultImage}
               alt="User"
-              className="w-12 h-12 rounded-full m-2"
+              className="message-image"
             />
           ) : null}
           {message.text.substring(0, 2) === 'ai' && user ? (
             <img
               src={'/assets/aiIcon.png' || defaultImage}
               alt="User"
-              className="w-12 h-12 rounded-full m-2"
+              className="message-image"
             />
           ) : null}
           {message.text}
