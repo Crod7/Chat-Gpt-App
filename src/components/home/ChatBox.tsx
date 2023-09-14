@@ -92,7 +92,7 @@ function ChatBox() {
       <input
         type="submit"
         value="Go"
-        className="submit-button"
+        className="submit-button-chatbox"
       />
     </form>
   </div>

@@ -7,15 +7,11 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --text-color: rgb(57, 57, 255);
-  --primary: white;
-  --secondary: #16165b;
-  --accent: rgb(58, 215, 110);
-  --buttonBackground: white;
-  --primaryFont: white;
-  --secondaryFont: rgb(177, 177, 177);
-  --blackFont: black;
+  --shadow: 0px 5px 33px -13px rgb(0, 0, 0);
 
+  --accent: rgb(0, 232, 15);
+
+  --login-or: rgb(170, 170, 170);
   --gradientBackground: linear-gradient(to bottom, #0045f2 to #9698ff);
   --primaryFont: black;
   --secondaryFont:white;
