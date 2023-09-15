@@ -1,15 +1,14 @@
 .loading-element {
-    animation: rotate 0.5s linear infinite;
-    margin-left: 4rem;
-    margin-top: 0.75rem;
+  animation: rotate 0.5s linear infinite;
+  margin-left: 4rem;
+  margin-top: 0.75rem;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
-  
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
   }
-  
+}

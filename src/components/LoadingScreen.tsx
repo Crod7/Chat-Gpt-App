@@ -4,7 +4,7 @@ import LoadingElement from './LoadingElement';
 function LoadingScreen() {
   return (
     <div className="loading-screen">
-      <LoadingElement/>
+      <LoadingElement />
     </div>
   );
 }

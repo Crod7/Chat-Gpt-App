@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Conversation from './Conversation';
 import LoadingElement from '../LoadingElement';
@@ -13,6 +13,14 @@ function ChatBox() {
   const [isLoading, setIsLoading] = useState(false);
   const [userInput, setUserInput] = useState('');
   const [conversation, setConversation] = useState<Message[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null); // Used to scroll to bottom when new message appears inm conversation
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+      console.log('check');
+    }
+  }, [conversation]);
 
   // Submits user input and gets OpenAI response
   async function onSubmit(event: { preventDefault: () => void }) {
@@ -63,41 +71,36 @@ function ChatBox() {
   }
 
   return (
-<div className="chat-box">
-  {/* Holds the messages between user and ai */}
-  <div>
-    <Conversation
-      conversation={
-        Array.isArray(conversation) ? conversation : [conversation]
-      }
-    />
-  </div>
-  {isLoading && (
-    <div>
-      <LoadingElement/>
+    <div className="chat-box" ref={containerRef}>
+      {/* Holds the messages between user and ai */}
+      <div>
+        <Conversation
+          conversation={
+            Array.isArray(conversation) ? conversation : [conversation]
+          }
+        />
+      </div>
+      {isLoading && (
+        <div>
+          <LoadingElement />
+        </div>
+      )}
+      {/* Manages the Input Box */}
+      <div className="form-container">
+        <form onSubmit={onSubmit}>
+          <input
+            type="text"
+            name="chatbot"
+            placeholder="Ask a question"
+            autoComplete="off"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            className="input-box"
+          />
+          <input type="submit" value="Go" className="submit-button-chatbox" />
+        </form>
+      </div>
     </div>
-  )}
-  {/* Manages the Input Box */}
-  <div className="form-container">
-    <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        name="chatbot"
-        placeholder="Ask a question"
-        autoComplete="off"
-        value={userInput}
-        onChange={(e) => setUserInput(e.target.value)}
-        className="input-box"
-      />
-      <input
-        type="submit"
-        value="Go"
-        className="submit-button-chatbox"
-      />
-    </form>
-  </div>
-</div>
-
   );
 }
 

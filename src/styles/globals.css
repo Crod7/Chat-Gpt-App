@@ -14,7 +14,7 @@
   --login-or: rgb(170, 170, 170);
   --gradientBackground: linear-gradient(to bottom, #0045f2 to #9698ff);
   --primaryFont: black;
-  --secondaryFont:white;
+  --secondaryFont: white;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,9 +29,3 @@ body {
   padding: 0px;
   margin: 0px;
 }
-
-
-
-  
-
-

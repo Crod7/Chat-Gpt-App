@@ -10,8 +10,5 @@
 @import url('./components/Conversation.css');
 @import url('./components/Navbar.css');
 
-
 /* Containers */
-@import url('./containers/HomeContainer.css')
-
-
+@import url('./containers/HomeContainer.css');

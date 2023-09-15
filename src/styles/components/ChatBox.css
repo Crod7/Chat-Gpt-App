@@ -1,50 +1,53 @@
 /* ChatBox.css */
 
-/* Styles for the main container */
+/* Styles for the conversation container */
 .chat-box {
-    border-radius: 4px;
-    padding: 0px;
-    color: var(--primaryFont);
-    width: 100vw;
-    height: 89vh;
-  }
-  
-  /* Styles for the input box */
-  .form-container {
-    position: absolute;
-    margin-left: 25vw;
-    width: 50vw;
-    -webkit-box-shadow: var(--shadow);
-    -moz-box-shadow: var(--shadow);
-    box-shadow: var(--shadow);
-    bottom: 10px;
-    border-radius: 20px;
-    padding: 6px;
-  }
-  
-  .input-box {
-    width: 80%;
-    border-radius: 8px;
-    padding: 8px;
-  }
+  border-radius: 4px;
+  padding: 0px;
+  color: var(--primaryFont);
+  width: 100vw;
+  height: 89vh;
+  max-height: 75vh;
+  overflow-y: scroll;
+}
 
-  .input-box:focus {
-    outline: none;
-  }
-  
-  .submit-button-chatbox {
-    position: relative;
-    right: 0;
-    width: 20%;
-    color: var(--accent);
-    border: 3px solid var(--accent);
-    padding: 8px;
-    border-radius: 8px;
-    cursor: pointer;
+/* Styles for the input box container*/
+.form-container {
+  position: absolute;
+  margin-left: 25vw;
+  width: 50vw;
+  -webkit-box-shadow: var(--shadow);
+  -moz-box-shadow: var(--shadow);
+  box-shadow: var(--shadow);
+  bottom: 15px;
+  border-radius: 20px;
+  padding: 6px;
+}
 
-    transition: all 0.3s; /* Animation duration */
-  }
+/* Styles for the input box itself*/
+.input-box {
+  width: 80%;
+  border-radius: 8px;
+  padding: 8px;
+}
 
-  .submit-button-chatbox:hover {
-    transform: scale(1.1);
-  }
+.input-box:focus {
+  outline: none;
+}
+
+.submit-button-chatbox {
+  position: relative;
+  right: 0;
+  width: 20%;
+  color: var(--accent);
+  border: 3px solid var(--accent);
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: all 0.3s; /* Animation duration */
+}
+
+.submit-button-chatbox:hover {
+  transform: scale(1.1);
+}

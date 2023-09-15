@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
@@ -28,10 +27,7 @@ function Navbar() {
         ) : (
           <div className="login-wrapper">
             <li className="nav-item">
-              <Link
-                href="/api/auth/login"
-                className="login-link"
-              >
+              <Link href="/api/auth/login" className="login-link">
                 Login
               </Link>
             </li>
@@ -47,10 +43,7 @@ function Navbar() {
               className="user-avatar"
             />
           )}
-          <Link
-            href="/api/auth/logout"
-            className="logout-link"
-          >
+          <Link href="/api/auth/logout" className="logout-link">
             Logout
           </Link>
         </div>
