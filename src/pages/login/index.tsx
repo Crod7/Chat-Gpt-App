@@ -62,7 +62,7 @@ export default function LoginPage() {
             <div className="or">OR</div>
           </div>
           <div className="right">
-            <Link className="login-button" href="/api/auth/login">
+            <Link className="login-button" href="/home">
               Try w/out Login
             </Link>
           </div>

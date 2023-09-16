@@ -13,7 +13,7 @@ const Conversation: React.FC<ConversationProps> = ({ conversation }) => {
   const { user, error, isLoading } = useUser();
 
   // Define a default image in case the user has a null image
-  const defaultImage = '/image.png';
+  const defaultImage = '/assets/default.png';
 
   return (
     <div className="conversation-container">
@@ -26,7 +26,14 @@ const Conversation: React.FC<ConversationProps> = ({ conversation }) => {
               className="message-image"
             />
           ) : null}
-          {message.text.substring(0, 2) === 'ai' && user ? (
+          {message.text.substring(0, 2) === 'us' && !user ? (
+            <img
+              src={defaultImage}
+              alt="User"
+              className="message-image"
+           />
+          ) : null}
+          {message.text.substring(0, 2) === 'ai' ? (
             <img
               src={'/assets/aiIcon.png' || defaultImage}
               alt="User"
