@@ -5,6 +5,7 @@
 }
 
 .message-container {
+  margin-left: 10vw;
   display: flex;
   justify-content: flex-start;
   align-items: center;

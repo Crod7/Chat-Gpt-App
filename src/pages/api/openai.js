@@ -27,6 +27,7 @@ export default async function (req, res) {
     });
     return;
   }
+  console.log(req.body.input);
 
   // Sends user input to api and awaits for response from OpenAI
   try {
@@ -45,8 +46,8 @@ export default async function (req, res) {
     const delayInSeconds = 3;
     setTimeout(() => {
       // After the delay, send the AI response
-      //res.status(200).json({ result: `ai: ${completion.data.choices[0].text}` });
-      res.status(200).json({ result: `ai: test` });
+      //res.status(200).json({ result: ` ai: ${completion.data.choices[0].text}` });
+      res.status(200).json({ result: ` ai: test` });
     }, delayInSeconds * 1000); // Convert seconds to milliseconds    // TEST RESPONSE
     /*
     conversation.push(`ai: test`);

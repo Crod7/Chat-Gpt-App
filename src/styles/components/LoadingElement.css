@@ -1,6 +1,6 @@
 .loading-element {
   animation: rotate 0.5s linear infinite;
-  margin-left: 4rem;
+  margin-left: 16vw;
   margin-top: 0.75rem;
 }
 

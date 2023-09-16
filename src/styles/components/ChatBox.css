@@ -13,6 +13,8 @@
 
 /* Styles for the input box container*/
 .form-container {
+  z-index: 1;
+  background: var(--inputBox);
   position: absolute;
   margin-left: 25vw;
   width: 50vw;
@@ -28,6 +30,7 @@
 .input-box {
   width: 80%;
   border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0);
   padding: 8px;
 }
 

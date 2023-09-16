@@ -15,32 +15,33 @@ const Conversation: React.FC<ConversationProps> = ({ conversation }) => {
   // Define a default image in case the user has a null image
   const defaultImage = '/assets/default.png';
 
+  // Function to remove 'user: ' or 'ai: ' prefix
+  const removePrefix = (text: string) => {
+    return text.replace(/^( user| ai):\s+/, ''); // Removes 'user: ' or 'ai: ' followed by spaces
+  };
+
   return (
     <div className="conversation-container">
       {conversation.map((message: Message, index: number) => (
         <div key={index} className="message-container">
-          {message.text.substring(0, 2) === 'us' && user ? (
+          {message.text.substring(1, 3) === 'us' && user ? (
             <img
               src={user.picture || defaultImage}
               alt="User"
               className="message-image"
             />
           ) : null}
-          {message.text.substring(0, 2) === 'us' && !user ? (
-            <img
-              src={defaultImage}
-              alt="User"
-              className="message-image"
-           />
+          {message.text.substring(1, 3) === 'us' && !user ? (
+            <img src={defaultImage} alt="User" className="message-image" />
           ) : null}
-          {message.text.substring(0, 2) === 'ai' ? (
+          {message.text.substring(1, 3) === 'ai' ? (
             <img
               src={'/assets/aiIcon.png' || defaultImage}
               alt="User"
               className="message-image"
             />
           ) : null}
-          {message.text}
+          {removePrefix(message.text)}
         </div>
       ))}
     </div>

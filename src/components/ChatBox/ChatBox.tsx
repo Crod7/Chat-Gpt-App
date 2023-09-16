@@ -7,14 +7,14 @@ interface Message {
   text: string;
 }
 
-// ChatBox found on home page
+// This component holds the conversation and input form
 function ChatBox() {
-  const { user, error } = useUser();
   const [isLoading, setIsLoading] = useState(false);
   const [userInput, setUserInput] = useState('');
   const [conversation, setConversation] = useState<Message[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null); // Used to scroll to bottom when new message appears inm conversation
+  const containerRef = useRef<HTMLDivElement>(null);
 
+  // Upon recieving a new message, snap to the bottom of ref to display newest message
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -35,7 +35,7 @@ function ChatBox() {
     setIsLoading(true);
 
     // Submits user message to conversation component while waiting for response
-    const newMessage: Message = { text: `user: ${userInput}` };
+    const newMessage: Message = { text: ` user: ${userInput}` };
     const updatedConversation = [...conversation, newMessage];
     setConversation(updatedConversation);
     setUserInput('');
