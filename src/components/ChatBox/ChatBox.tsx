@@ -80,8 +80,9 @@ function ChatBox() {
           }
         />
       </div>
+
       {isLoading && (
-        <div>
+        <div className="ChatBox-loading-element">
           <LoadingElement />
         </div>
       )}

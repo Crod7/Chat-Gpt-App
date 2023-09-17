@@ -1,9 +1,15 @@
 .loading-element {
   animation: rotate 0.5s linear infinite;
-  margin-left: 16vw;
+  margin-left: 0vw;
   margin-top: 0.75rem;
 }
-
+/* Used to show user that a message response is in progress in the Conversation Component.)*/
+.ChatBox-loading-element {
+  margin-left: 15vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 @keyframes rotate {
   from {
     transform: rotate(0deg);

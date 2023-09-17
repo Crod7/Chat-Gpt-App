@@ -4,7 +4,6 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 interface Message {
   text: string;
 }
-
 interface ConversationProps {
   conversation: Message[];
 }

@@ -31,27 +31,24 @@ export default async function (req, res) {
 
   // Sends user input to api and awaits for response from OpenAI
   try {
-    //conversation.push(`user: ${input}`); // input added to conversation
 
-    // BELOW IS THE OPENAI CALL WE WILL USE A TEST RESPOSNE TO SAVE MONEY
-    /*
+    // BELOW IS THE OPENAI CALL WE WILL USE TO GET A CHATGPT RESPONSE
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: generatePrompt(input), // calls function to view and respond to conversation
+      prompt: generatePrompt(input),
       temperature: 0.6,
-    });*/
-    // ACTUAL OPENAI GENERATION AND RESPONSE
-    //conversation.push(`ai: ${completion.data.choices[0].text}`); // takes ai response and adds it to conversation
-    // Introduce a delay using setTimeout (e.g., 5 seconds)
-    const delayInSeconds = 3;
-    setTimeout(() => {
+    });
+    res.status(200).json({ result: ` ai: ${completion.data.choices[0].text}` });
+
+      /* BELOW IS THE TEST RESPONSE USED DURING TESTING TO SAVE MONEY
+        WE USE A SETTIMEOUT DELAY TO MIMIC CHATGPT RESPONSE TIME*/
       // After the delay, send the AI response
-      //res.status(200).json({ result: ` ai: ${completion.data.choices[0].text}` });
-      res.status(200).json({ result: ` ai: test` });
-    }, delayInSeconds * 1000); // Convert seconds to milliseconds    // TEST RESPONSE
-    /*
-    conversation.push(`ai: test`);
-    res.status(200).json({result: conversation});*/
+      // Introduce a delay using setTimeout (e.g., 5 seconds)
+      //const delayInSeconds = 3;
+      //setTimeout(() => {
+      //res.status(200).json({ result: ` ai: test` });
+    //}, delayInSeconds * 1000); // Convert seconds to milliseconds    // TEST RESPONSE
+
   } catch (error) {
     if (error.response) {
       console.error(error.response.status, error.resposne.data);
